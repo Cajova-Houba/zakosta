@@ -1,0 +1,82 @@
+html {
+	padding-bottom :0;
+	margin-bottom: 0;
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	min-height: 100%;
+}
+
+#content-container {
+	margin-bottom: -30px;
+	padding-bottom: 30px;
+	height: 100%;
+	min-height: 100%;
+	
+	position: relative;
+}
+
+#mainLogo {
+	padding: 0;
+	margin: 0;
+	min-height: 159px;
+}
+
+#mainMenu {
+	font-size: 120%;
+}
+
+#mainMenu .menuItem {
+	width: 16.6%;
+}
+
+#body-container {
+	width: 70%;
+	
+	margin-left: 15%;
+	margin-right:auto;
+}
+
+#bodyContent-container {
+	overflow: hidden;
+}
+
+#mainContent {
+	width: 70%;
+	padding-right: 10px;
+	
+	float:left;
+}
+
+#sideContent {
+	padding-left: 10px;
+	
+	overflow: hidden;
+}
+
+#footer {
+	width: 100%;
+	height: 30px;
+	
+	font-size: 70%;
+	
+	position:absolute;
+	left: 0;
+	bottom: 0;
+	margin-top: 20px;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+
+#footer ul li {
+	display: inline;
+	list-style-type: none;
+}
+
+#footer .footerItem {
+	padding-left: 20px;
+	padding-right: 25px;
+}
