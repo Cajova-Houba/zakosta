@@ -1,6 +1,7 @@
 <?php
 
 require_once('utils.php');
+require_once('PhotoswipeView.php');
 
 /**
  * Component for displaying image preview with caption.
@@ -91,7 +92,9 @@ class GalleryPageView {
  	/**
  	 * Returns the HTML of gallery component.
  	 * $data is expected to contain ["view"] and ["images"]. Each element of ["images"] array is expected to contain ["fullPath"] index which 
- 	 * contains full path to the image, ["fileName"] which contains file name of the image. If detailed view is being displayed, each element in
+ 	 * contains full path to the image, ["fileName"] which contains file name of the image, ["width"] and ["height"] with size of actual image. 
+ 	 * 
+ 	 * If detailed view is being displayed, each element in
  	 * ["images"] should also contain ["previus"], ["next"] with arrays containing file names of previous / next images and ["num"] which is a 
  	 * number of current image.
  	 */
@@ -115,11 +118,12 @@ class GalleryPageView {
 	 * $folder Name of the folder to be displayed. Is expected to be already checked that it is in getPossibleGalleryViews() array.
 	 */
 	private static function getFolderView($data) {
-		$folder = $data["view"];
+		$folder = escapechars($data["view"]);
 		$header = GalleryPageView::getFolderHeader($folder);
 		$images = $data["images"];
 		$imageHTML = "";
 		$width = 130;
+		$imgBaseUrl = $_SERVER['HTTP_HOST'];
 
 		$lineCnt = 0;
 
@@ -127,15 +131,18 @@ class GalleryPageView {
 		foreach($images as $image) {
 			$fp = $image["fullPath"];
 			$fn = $image["fileName"];
+			$size = $image["width"]."x".$image["height"];
 			if(($lineCnt % 4)  == 0) {
 				$imageHTML = $imageHTML." <tr>
 				";
 			}
 			$imageHTML = $imageHTML."
 					<td>
-						<a href=\"index.php?p=gallery&g=".escapechars($folder)."&detail=".$fn."\">
-							<img src=\"".$fp."\" style=\"max-width:".$width."px;max-height:".$width."px;\">
-						</a>
+						<figure data-size=\"".$size."\" data-index=\"".$lineCnt."\" onClick=\"onThumbnailsClick()\" data-source=\"".$fp."\" class=\"zakosta-gallery-item\">
+							<!--<a href=\"index.php?p=gallery&g=".$folder."&detail=".$fn."\">-->
+								<img src=\"".$fp."\" style=\"max-width:".$width."px;max-height:".$width."px;\">
+							<!--</a>-->
+						</figure>
 					</td>
 			";
 			$lineCnt++;
@@ -155,9 +162,12 @@ class GalleryPageView {
 				<!-- main content window - galery, articles... -->
 				<div id=\"mainContent\" class=\"w3-container w3-margin-top\">
 					<h2>Galerie - ".$header."</h2>
-						<table id=\"galeryTable\">
-						".$imageHTML."
-						</table>
+						<div class=\"zakosta-gallery\">
+							<table id=\"galeryTable\">
+							".$imageHTML."
+							</table>
+						</div>
+						".PhotoswipeView::getHTML()."
 				</div>".
 				ContactView::getHTML()
 			."</div>

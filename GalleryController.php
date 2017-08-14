@@ -17,12 +17,6 @@ class GalleryController
 		$order = 1;
 		if(isset($_GET['g']) && array_key_exists($_GET['g'], GalleryPageView::getPossibleGalleryViews())) {
 			$folder = escapechars($_GET["g"]);
-			if(!isset($_GET["detail"])) {
-				// no detailed view
-				$currentImage = false;
-			} else {
-				$currentImage = escapechars($_GET["detail"]);
-			}
 			$data['view'] = $folder;
 
 			// load images
@@ -48,13 +42,14 @@ class GalleryController
 
 				// it is expected that every non-dir item is image
 				if(!is_dir($pathToFolder."/".$dirItem)) {
+					$fp = $pathToFolder."/".$dirItem;
+					$size = getimagesize($fp);
 					$data['images'][] = array(
-							"fullPath" => $pathToFolder."/".$dirItem,
+							"fullPath" => $fp,
 							"fileName" => $dirItem,
 							"num" => $order,
-							"previous" => array($thumbnails[0]),
-							"next" => array($thumbnails[2]),
-
+							"width" => $size[0],
+							"height" => $size[1]
 						);
 					$order++;
 				}

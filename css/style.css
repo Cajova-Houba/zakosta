@@ -50,6 +50,13 @@ body {
 	float:left;
 }
 
+.zakosta-gallery-item {
+	display: block;
+	float: left;
+	margin: 0 5px 5px 0;
+	width: 130px;
+}
+
 #sideContent {
 	padding-left: 10px;
 	

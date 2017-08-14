@@ -19,7 +19,7 @@ class HeaderView
 	*/
 	private static $jScripts = array(
 			"js/script.js",
-			"js/pthotoswipe.min.js",
+			"js/photoswipe.min.js",
 			"js/photoswipe-ui-default.min.js"
 		);
 	
