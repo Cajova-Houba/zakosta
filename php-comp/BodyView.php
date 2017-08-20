@@ -15,22 +15,18 @@ class BodyView
 		return "
 			<body class=\"w3-light-grey\">
 				<div class=\"w3-main\">
-					<div id=\"content-container\">
-						<div id=\"mainLogo\" class=\"w3-light-grey\" >
-							<img src=\"img/mainLogo.png\" alt=\"zakosta\" height=\"159\" widht=\"957\">
+					<div id=\"mainLogo\" class=\"w3-light-grey w3-row\" >
+						<img src=\"img/mainLogo.png\" alt=\"zakosta\" height=\"159\" widht=\"957\">
+					</div>
+					".$mainMenu."
+					<!-- this is where the actual content is -->
+					<div id=\"body-container\" class=\"w3-row w3-container\">
+						<!-- main content window - galery, articles... -->
+						<div id=\"mainContent\" class=\"w3-container w3-margin-top w3-twothird\">
+							".$content."
 						</div>
-						".$mainMenu."
-						<div id=\"body-container\">
-							<!-- this is where the actual content is -->
-							<div id=\"bodyContent-container\" class=\"w3-container\">
-								<!-- main content window - galery, articles... -->
-								<div id=\"mainContent\" class=\"w3-container w3-margin-top\">
-									".$content."
-								</div>
-								".ContactView::getHTML()."
-							</div>
-						</div>
-					<div>
+						".ContactView::getHTML()."
+					</div>
 					".FooterView::getHTML()."
 				</div>
 			</body>

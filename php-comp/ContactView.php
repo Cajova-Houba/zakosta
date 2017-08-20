@@ -9,7 +9,7 @@ class ContactView
 	{
 		return "
 			<!-- small side window next to the main one -->
-			<div id=\"sideContent\" class=\"w3-container\">
+			<div class=\"w3-third w3-container\">
 				<h4>Kontaktuje nás</h4>
 				<ul>
 					<li><a href=\"mailto:info@zakosta.cz\">info@zakosta.cz</a></li>

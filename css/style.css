@@ -9,15 +9,6 @@ body {
 	min-height: 100%;
 }
 
-#content-container {
-	/*margin-bottom: -30px;
-	padding-bottom: 30px;
-	height: 100%;
-	min-height: 100%;
-	
-	position: relative;*/
-}
-
 #mainLogo {
 	padding: 0;
 	margin: 0;
@@ -39,17 +30,6 @@ body {
 	margin-right:auto;
 }
 
-#bodyContent-container {
-	overflow: hidden;
-}
-
-#mainContent {
-	width: 70%;
-	padding-right: 10px;
-	
-	float:left;
-}
-
 .zakosta-gallery-item {
 	display: block;
 	float: left;
@@ -57,24 +37,8 @@ body {
 	width: 130px;
 }
 
-#sideContent {
-	padding-left: 10px;
-	
-	overflow: hidden;
-}
-
 #footer {
-	/*width: 100%;
-	height: 30px;*/
-	
 	font-size: 70%;
-	
-	/*position:absolute;
-	left: 0;
-	bottom: 0;
-	margin-top: 20px;
-	margin-bottom: 0;
-	padding-bottom: 0;*/
 }
 
 
