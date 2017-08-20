@@ -16,8 +16,8 @@ class BodyView
 			<body class=\"w3-light-grey\">
 				<div class=\"w3-main\">
 					<div id=\"content-container\">
-						<div id=\"mainLogo\" class=\"w3-white\" >
-							<img src=\"img/mainLogo.jpg\" alt=\"zakosta\" height=\"159\" widht=\"957\">
+						<div id=\"mainLogo\" class=\"w3-light-grey\" >
+							<img src=\"img/mainLogo.png\" alt=\"zakosta\" height=\"159\" widht=\"957\">
 						</div>
 						".$mainMenu."
 						<div id=\"body-container\">

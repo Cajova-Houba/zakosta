@@ -139,9 +139,9 @@ class GalleryPageView {
 			$imageHTML = $imageHTML."
 					<td>
 						<figure data-size=\"".$size."\" data-index=\"".$lineCnt."\" onClick=\"onThumbnailsClick()\" data-source=\"".$fp."\" class=\"zakosta-gallery-item\">
-							<!--<a href=\"index.php?p=gallery&g=".$folder."&detail=".$fn."\">-->
+							<a href=\"#\">
 								<img src=\"".$fp."\" style=\"max-width:".$width."px;max-height:".$width."px;\">
-							<!--</a>-->
+							</a>
 						</figure>
 					</td>
 			";
