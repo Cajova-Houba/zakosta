@@ -40,8 +40,6 @@ class HeaderView
 		}
 
 		return "
-			<!doctype html>
-            <html lang=\"cz\">
             <head>
 				<title>Zakosta</title>
 				

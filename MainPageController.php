@@ -1,10 +1,10 @@
 <?php
-require_once('php-comp/HeaderView.php');
 require_once('php-comp/MainMenuView.php');
-require_once('php-comp/FooterView.php');
 require_once('php-comp/AboutView.php');
 require_once('php-comp/WorkView.php');
 require_once('php-comp/ContactPageView.php');
+require_once('php-comp/AbstractPageView.php');
+require_once('php-comp/BodyView.php');
 
 /**
 * Controller for all pages except the gallery page.
@@ -44,11 +44,10 @@ class MainPageController
 	}
 
 	function getHTML() {
-		$header = HeaderView::getHTML();
 		$mainMenu = MainMenuView::getHTML(MainMenuView::NOTHING_ACTIVE);
-		$footer = FooterView::getHTML();
+		$body = BodyView::wrapContent($mainMenu, $this->content);
 
-		return $header.$mainMenu.$this->content.$footer;
+		return AbstractPageView::getHTML($body);
 	}
 }
 ?>

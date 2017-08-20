@@ -1,8 +1,9 @@
 <?php
 require_once('php-comp/HeaderView.php');
 require_once('php-comp/MainMenuView.php');
-require_once('php-comp/FooterView.php');
 require_once('php-comp/GalleryPageView.php');
+require_once('php-comp/AbstractPageView.php');
+require_once('php-comp/BodyView.php');
 
 /**
 * Controller for the gallery page.
@@ -68,11 +69,10 @@ class GalleryController
 	}
 
 	function getHTML() {
-		$header = HeaderView::getHTML();
 		$mainMenu = MainMenuView::getHTML(MainMenuView::NOTHING_ACTIVE);
-		$footer = FooterView::getHTML();
+		$body = BodyView::wrapContent($mainMenu, $this->content);
 
-		return $header.$mainMenu.$this->content.$footer;
+		return AbstractPageView::getHTML($body);
 	}
 }
 

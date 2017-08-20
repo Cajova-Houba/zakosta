@@ -155,24 +155,13 @@ class GalleryPageView {
 		}
 
 		return "
-			<div id=\"body-container\">
-			<!-- this is where the actual content is -->
-			<div id=\"bodyContent-container\" class=\"w3-container\">
-			
-				<!-- main content window - galery, articles... -->
-				<div id=\"mainContent\" class=\"w3-container w3-margin-top\">
-					<h2>Galerie - ".$header."</h2>
-						<div class=\"zakosta-gallery\">
-							<table id=\"galeryTable\">
-							".$imageHTML."
-							</table>
-						</div>
-						".PhotoswipeView::getHTML()."
-				</div>".
-				ContactView::getHTML()
-			."</div>
-		</div>
-		";
+			<h2>Galerie - ".$header."</h2>
+				<div class=\"zakosta-gallery\">
+					<table id=\"galeryTable\">
+					".$imageHTML."
+					</table>
+				</div>
+				".PhotoswipeView::getHTML();
 	}
 
 	/**
@@ -204,21 +193,10 @@ class GalleryPageView {
 				";
 
 		return "
-			<div id=\"body-container\">
-			<!-- this is where the actual content is -->
-			<div id=\"bodyContent-container\" class=\"w3-container\">
-			
-				<!-- main content window - galery, articles... -->
-				<div id=\"mainContent\" class=\"w3-container w3-margin-top\">
-					<h2>Galerie - ".$header."</h2>
-						<div class=\"w3-content w3-display-container\">
-							".$imageHTML."
-						</div>
-				</div>".
-				ContactView::getHTML()
-			."</div>
-		</div>
-		";
+			<h2>Galerie - ".$header."</h2>
+				<div class=\"w3-content w3-display-container\">
+					".$imageHTML."
+				</div>";
 	}
 
 
@@ -228,95 +206,84 @@ class GalleryPageView {
 	private static function getBaseView() {
 		$width = 130;
 		return "
-			<div id=\"body-container\">
-			<!-- this is where the actual content is -->
-			<div id=\"bodyContent-container\" class=\"w3-container\">
-			
-				<!-- main content window - galery, articles... -->
-				<div id=\"mainContent\" class=\"w3-container w3-margin-top\">
-					<h2>Galerie - reference</h2>
-						<p>
-						Prohlédněte si naše ukončené projekty.
-						</p>
+			<h2>Galerie - reference</h2>
+				<p>
+				Prohlédněte si naše ukončené projekty.
+				</p>
+				
+				<table id=\"galeryTable\">
+					<tr>
+						<td>
+							".ImageCaptionView::getHTML(GalleryPageView::BALKONY_VIEW,"Obraz0098.jpg",$width)."
+						</td>
 						
-						<table id=\"galeryTable\">
-							<tr>
-								<td>
-									".ImageCaptionView::getHTML(GalleryPageView::BALKONY_VIEW,"Obraz0098.jpg",$width)."
-								</td>
-								
-								<td>
-									".ImageCaptionView::getHTML(GalleryPageView::BETONOVANI_VIEW,"11102012678.jpg",$width)."
-								</td>
-								
-								<td>
-									".ImageCaptionView::getHTML(GalleryPageView::BRANY_VIEW,"DSCN3485.JPG",$width)."
-								</td>
-								
-								<td>
-									".ImageCaptionView::getHTML(GalleryPageView::MRIZE_VIEW,"DSCN3660.JPG",$width)."
-								</td>
-							</tr>
-							
-							<tr>
-								<td>
-									".ImageCaptionView::getHTML(GalleryPageView::PERGOLY_VIEW,"DSC00640.JPG",$width)."
-								</td>
-								
-								<td>
-									".ImageCaptionView::getHTML(GalleryPageView::PLOTY_VIEW,"20150701_172528.jpg",$width)."
-								</td>
-								
-								<td>
-									".ImageCaptionView::getHTML(GalleryPageView::POKLOPY_VIEW,"Obraz0253.jpg",$width)."
-								</td>
-								
-								<td>
-									".ImageCaptionView::getHTML(GalleryPageView::PRISTRESKY_VIEW,"DSC_0670.jpg",$width)."
-								</td>
-							</tr>
-							
-							<tr>
-								<td>
-									".ImageCaptionView::getHTML(GalleryPageView::ROSTY_VIEW,"20151021_133754.jpg",$width)."
-								</td>
-								
-								<td>
-									".ImageCaptionView::getHTML(GalleryPageView::SCHODY_VIEW,"foto 021.jpg",$width)."
-								</td>
-								
-								<td>
-									".ImageCaptionView::getHTML(GalleryPageView::SLOUPKY_VIEW,"20170425_112049.jpg",$width)."
-								</td>
-								
-								<td>
-									".ImageCaptionView::getHTML(GalleryPageView::SOLARNI_SPRCHY_VIEW,"20160522_122227.jpg",$width)."
-								</td>
-							</tr>
-							
-							<tr>
-								<td>
-									".ImageCaptionView::getHTML(GalleryPageView::VRATA_VIEW,"20150312_142921.jpg",$width)."
-								</td>
-								
-								<td>
-									".ImageCaptionView::getHTML(GalleryPageView::ZABRADLI_VIEW,"20151004_134545.jpg",$width)."
-								</td>
-								
-								<td>
-									".ImageCaptionView::getHTML(GalleryPageView::ZAHRADNI_NABYTEK_VIEW,"DSC_0609.jpg",$width)."
-								</td>
-								
-								<td>
-									".ImageCaptionView::getHTML(GalleryPageView::OSTATNI_VIEW,"DSCN3484.JPG",$width)."
-								</td>
-							</tr>
-						</table>
-				</div>".
-				ContactView::getHTML()
-			."</div>
-		</div>
-		";
+						<td>
+							".ImageCaptionView::getHTML(GalleryPageView::BETONOVANI_VIEW,"11102012678.jpg",$width)."
+						</td>
+						
+						<td>
+							".ImageCaptionView::getHTML(GalleryPageView::BRANY_VIEW,"DSCN3485.JPG",$width)."
+						</td>
+						
+						<td>
+							".ImageCaptionView::getHTML(GalleryPageView::MRIZE_VIEW,"DSCN3660.JPG",$width)."
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							".ImageCaptionView::getHTML(GalleryPageView::PERGOLY_VIEW,"DSC00640.JPG",$width)."
+						</td>
+						
+						<td>
+							".ImageCaptionView::getHTML(GalleryPageView::PLOTY_VIEW,"20150701_172528.jpg",$width)."
+						</td>
+						
+						<td>
+							".ImageCaptionView::getHTML(GalleryPageView::POKLOPY_VIEW,"Obraz0253.jpg",$width)."
+						</td>
+						
+						<td>
+							".ImageCaptionView::getHTML(GalleryPageView::PRISTRESKY_VIEW,"DSC_0670.jpg",$width)."
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							".ImageCaptionView::getHTML(GalleryPageView::ROSTY_VIEW,"20151021_133754.jpg",$width)."
+						</td>
+						
+						<td>
+							".ImageCaptionView::getHTML(GalleryPageView::SCHODY_VIEW,"foto 021.jpg",$width)."
+						</td>
+						
+						<td>
+							".ImageCaptionView::getHTML(GalleryPageView::SLOUPKY_VIEW,"20170425_112049.jpg",$width)."
+						</td>
+						
+						<td>
+							".ImageCaptionView::getHTML(GalleryPageView::SOLARNI_SPRCHY_VIEW,"20160522_122227.jpg",$width)."
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							".ImageCaptionView::getHTML(GalleryPageView::VRATA_VIEW,"20150312_142921.jpg",$width)."
+						</td>
+						
+						<td>
+							".ImageCaptionView::getHTML(GalleryPageView::ZABRADLI_VIEW,"20151004_134545.jpg",$width)."
+						</td>
+						
+						<td>
+							".ImageCaptionView::getHTML(GalleryPageView::ZAHRADNI_NABYTEK_VIEW,"DSC_0609.jpg",$width)."
+						</td>
+						
+						<td>
+							".ImageCaptionView::getHTML(GalleryPageView::OSTATNI_VIEW,"DSCN3484.JPG",$width)."
+						</td>
+					</tr>
+				</table>";
 	}
 }
 ?>
