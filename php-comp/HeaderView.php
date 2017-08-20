@@ -11,7 +11,8 @@ class HeaderView
 	private static $styles = array(
 			"http://www.w3schools.com/lib/w3.css",
 			"css/style.css",
-			"css/photoswipe.css"
+			"css/photoswipe.css",
+			"css/default-skin.css"
 		);
 
 	/**
