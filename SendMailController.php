@@ -35,18 +35,19 @@ class SendMailController
 			return "";
 		}
 
-		$email = $_POST["email"];
-		$subject = $_POST["subject"];
-		$message = $_POST["message"];
-		$recaptcha = $_POST["g-recaptcha-response"];
+		$email = escapechars($_POST["email"]);
+		$subject = escapechars($_POST["subject"]);
+		$message = escapechars($_POST["message"]);
+		$recaptcha = escapechars($_POST["g-recaptcha-response"]);
 
         if(!$this->validateRecaptcha($recaptcha)) {
             // send error
             header("Location: index.php?p=$this->origPage$galFolUrlParam&err=".Errors::RECAPTCHA_FAILED);
         } else {
             // send mail
-            mail("info@zakosta.cz", "[".$email."] - ".$subject, $message);
-            header("Location: index.php?p=$this->origPage$galFolUrlParam");
+            $headers = "Content-Type: text/html; charset=UTF-8";
+            mail("info@zakosta.cz", "[".$email."] - ".$subject, $message, $headers);
+            header("Location: index.php?p=$this->origPage$galFolUrlParam&err=".Errors::SUCCESS);
         }
 
 		return "";

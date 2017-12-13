@@ -24,6 +24,8 @@ class ContactView
 			$error = "<br><span class=\"w3-margin-top w3-text-red\">Chybí některé informace.</span>";
 		} else if ($err == Errors::RECAPTCHA_FAILED) {
 		    $error = "<br><span class=\"w3-margin-top w3-text-red\">ReCaptcha test nevyšel. Zkuste to prosím znovu.</span>";
+        } else if($err == Errors::SUCCESS) {
+		    $error = "<br><span class=\"w3-margin-top w3-text-green\">Váš email byl úspěšně odeslán.</span> ";
         }
 
 		/* captcha key provided by google */
