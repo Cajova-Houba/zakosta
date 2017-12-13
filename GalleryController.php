@@ -4,6 +4,7 @@ require_once('php-comp/MainMenuView.php');
 require_once('php-comp/GalleryPageView.php');
 require_once('php-comp/AbstractPageView.php');
 require_once('php-comp/BodyView.php');
+require_once('php-comp/Errors.php');
 
 /**
 * Controller for the gallery page.
@@ -11,54 +12,54 @@ require_once('php-comp/BodyView.php');
 class GalleryController
 {
 	private $content = "";
+	private $folder = "";
 
 	function __construct()
 	{
 		$data = array();
 		$order = 1;
 		if(isset($_GET['g']) && array_key_exists($_GET['g'], GalleryPageView::getPossibleGalleryViews())) {
-			$folder = escapechars($_GET["g"]);
-			$data['view'] = $folder;
+			$this->folder = escapechars($_GET["g"]);
+			$data['view'] = $this->folder;
 
 			// load images
-			$pathToFolder = ImageCaptionView::PHOTO_ROOT_PATH.$folder;
+			$pathToFolder = ImageCaptionView::PHOTO_ROOT_PATH.$this->folder;
 			$dirItems = scandir($pathToFolder);
 			$data['images'] = array();
 			$dirItemCount = count($dirItems);
 
-			// if the detailed view is being displayed, this array will contain file names
-			// of images which will be displayed as previous / next thumbnails
-			// size of this array should be 3 with detaled image on index 1 (0-based indexing)
-			$thumbnails = array(null,null,null);
+			// miniature suffix
+			$minSuffix = "-min.jpg";
+			$minSuffixLen = strlen($minSuffix);
+
+			// fill data
 			for ($i = 0; $i < $dirItemCount; $i++) {
 				$dirItem = $dirItems[$i];
-				$tCount = count($thumbnails);
-
-				// add current item ino the middle of thumbnails array
-				$thumbnails[1] = $dirItem;
-				if ($i < $dirItemCount - 1) {
-					// add next item 
-					$thumbnails[2] = $dirItems[$i+1];
-				}
 
 				// it is expected that every non-dir item is image
 				if(!is_dir($pathToFolder."/".$dirItem)) {
+					// image can be either image, or miniature
+					if(substr($dirItem, -$minSuffixLen) === $minSuffix) {
+						// skip miniature
+						continue;
+					}
+
 					$fp = $pathToFolder."/".$dirItem;
+					// substr() is used to remove .jpg suffix from $dirItem so that miniature suffix can be added
+					$fpNameMin = substr($dirItem, 0, strlen($dirItem)-4).$minSuffix;
+					$fpMin = $pathToFolder."/".$fpNameMin;
 					$size = getimagesize($fp);
 					$data['images'][] = array(
 							"fullPath" => $fp,
 							"fileName" => $dirItem,
+							"fullPathMiniature" => $fpMin,
+							"fileNameMiniature" => $fpNameMin,
 							"num" => $order,
 							"width" => $size[0],
 							"height" => $size[1]
 						);
 					$order++;
 				}
-
-				// shift array with thumbnails to left
-				$thumbnails[0] = $thumbnails[1];
-				$thumbnails[1] = $thumbnails[2];
-				$thumbnails[2] = null;
 			}
 
 		} else {
@@ -70,7 +71,16 @@ class GalleryController
 
 	function getHTML() {
 		$mainMenu = MainMenuView::getHTML(MainMenuView::NOTHING_ACTIVE);
-		$body = BodyView::wrapContent($mainMenu, $this->content);
+
+		$data = [];
+		$data["op"] = PageNameResolver::GALLERY_PAGE_NAME;
+		$data["g"] = $this->folder;
+		if(isset($_GET["err"])) {
+		    $data["error"] = escapechars($_GET["err"]);
+        } else {
+		    $data["error"] = Errors::NO_ERR;
+        }
+		$body = BodyView::wrapContent($mainMenu, $this->content, $data);
 
 		return AbstractPageView::getHTML($body);
 	}

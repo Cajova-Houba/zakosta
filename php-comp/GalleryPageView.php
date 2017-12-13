@@ -92,11 +92,7 @@ class GalleryPageView {
  	/**
  	 * Returns the HTML of gallery component.
  	 * $data is expected to contain ["view"] and ["images"]. Each element of ["images"] array is expected to contain ["fullPath"] index which 
- 	 * contains full path to the image, ["fileName"] which contains file name of the image, ["width"] and ["height"] with size of actual image. 
- 	 * 
- 	 * If detailed view is being displayed, each element in
- 	 * ["images"] should also contain ["previus"], ["next"] with arrays containing file names of previous / next images and ["num"] which is a 
- 	 * number of current image.
+ 	 * contains full path to the image, ["fileName"] which contains file name of the image, ["width"] and ["height"] with size of actual image.
  	 */
 	static function getHTML($data) {
 		$view = $data["view"];
@@ -130,7 +126,9 @@ class GalleryPageView {
 		// create table content
 		foreach($images as $image) {
 			$fp = $image["fullPath"];
+			$fpM = $image["fullPathMiniature"];
 			$fn = $image["fileName"];
+			$fnM = $image["fileNameMiniature"];
 			$size = $image["width"]."x".$image["height"];
 			if(($lineCnt % 4)  == 0) {
 				$imageHTML = $imageHTML." <tr>
@@ -140,7 +138,7 @@ class GalleryPageView {
 					<td>
 						<figure data-size=\"".$size."\" data-index=\"".$lineCnt."\" onClick=\"onThumbnailsClick()\" data-source=\"".$fp."\" class=\"zakosta-gallery-item\">
 							<a href=\"#\">
-								<img src=\"".$fp."\" style=\"max-width:".$width."px;max-height:".$width."px;\">
+								<img src=\"".$fpM."\" style=\"max-width:".$width."px;max-height:".$width."px;\">
 							</a>
 						</figure>
 					</td>
@@ -214,73 +212,73 @@ class GalleryPageView {
 				<table id=\"galeryTable\">
 					<tr>
 						<td>
-							".ImageCaptionView::getHTML(GalleryPageView::BALKONY_VIEW,"Obraz0098.jpg",$width)."
+							".ImageCaptionView::getHTML(GalleryPageView::BALKONY_VIEW,"Obraz0098-min.jpg",$width)."
 						</td>
 						
 						<td>
-							".ImageCaptionView::getHTML(GalleryPageView::BETONOVANI_VIEW,"11102012678.jpg",$width)."
+							".ImageCaptionView::getHTML(GalleryPageView::BETONOVANI_VIEW,"11102012678-min.jpg",$width)."
 						</td>
 						
 						<td>
-							".ImageCaptionView::getHTML(GalleryPageView::BRANY_VIEW,"DSCN3485.JPG",$width)."
+							".ImageCaptionView::getHTML(GalleryPageView::BRANY_VIEW,"DSCN3485-min.jpg",$width)."
 						</td>
 						
 						<td>
-							".ImageCaptionView::getHTML(GalleryPageView::MRIZE_VIEW,"DSCN3660.JPG",$width)."
+							".ImageCaptionView::getHTML(GalleryPageView::MRIZE_VIEW,"DSCN3660-min.jpg",$width)."
 						</td>
 					</tr>
 					
 					<tr>
 						<td>
-							".ImageCaptionView::getHTML(GalleryPageView::PERGOLY_VIEW,"DSC00640.JPG",$width)."
+							".ImageCaptionView::getHTML(GalleryPageView::PERGOLY_VIEW,"DSC00640-min.jpg",$width)."
 						</td>
 						
 						<td>
-							".ImageCaptionView::getHTML(GalleryPageView::PLOTY_VIEW,"20150701_172528.jpg",$width)."
+							".ImageCaptionView::getHTML(GalleryPageView::PLOTY_VIEW,"20150701_172528-min.jpg",$width)."
 						</td>
 						
 						<td>
-							".ImageCaptionView::getHTML(GalleryPageView::POKLOPY_VIEW,"Obraz0253.jpg",$width)."
+							".ImageCaptionView::getHTML(GalleryPageView::POKLOPY_VIEW,"Obraz0253-min.jpg",$width)."
 						</td>
 						
 						<td>
-							".ImageCaptionView::getHTML(GalleryPageView::PRISTRESKY_VIEW,"DSC_0670.jpg",$width)."
+							".ImageCaptionView::getHTML(GalleryPageView::PRISTRESKY_VIEW,"DSC_0670-min.jpg",$width)."
 						</td>
 					</tr>
 					
 					<tr>
 						<td>
-							".ImageCaptionView::getHTML(GalleryPageView::ROSTY_VIEW,"20151021_133754.jpg",$width)."
+							".ImageCaptionView::getHTML(GalleryPageView::ROSTY_VIEW,"20151021_133754-min.jpg",$width)."
 						</td>
 						
 						<td>
-							".ImageCaptionView::getHTML(GalleryPageView::SCHODY_VIEW,"foto 021.jpg",$width)."
+							".ImageCaptionView::getHTML(GalleryPageView::SCHODY_VIEW,"foto 021-min.jpg",$width)."
 						</td>
 						
 						<td>
-							".ImageCaptionView::getHTML(GalleryPageView::SLOUPKY_VIEW,"20170425_112049.jpg",$width)."
+							".ImageCaptionView::getHTML(GalleryPageView::SLOUPKY_VIEW,"20170425_112049-min.jpg",$width)."
 						</td>
 						
 						<td>
-							".ImageCaptionView::getHTML(GalleryPageView::SOLARNI_SPRCHY_VIEW,"20160522_122227.jpg",$width)."
+							".ImageCaptionView::getHTML(GalleryPageView::SOLARNI_SPRCHY_VIEW,"20160522_122227-min.jpg",$width)."
 						</td>
 					</tr>
 					
 					<tr>
 						<td>
-							".ImageCaptionView::getHTML(GalleryPageView::VRATA_VIEW,"20150312_142921.jpg",$width)."
+							".ImageCaptionView::getHTML(GalleryPageView::VRATA_VIEW,"20150312_142921-min.jpg",$width)."
 						</td>
 						
 						<td>
-							".ImageCaptionView::getHTML(GalleryPageView::ZABRADLI_VIEW,"20151004_134545.jpg",$width)."
+							".ImageCaptionView::getHTML(GalleryPageView::ZABRADLI_VIEW,"20151004_134545-min.jpg",$width)."
 						</td>
 						
 						<td>
-							".ImageCaptionView::getHTML(GalleryPageView::ZAHRADNI_NABYTEK_VIEW,"DSC_0609.jpg",$width)."
+							".ImageCaptionView::getHTML(GalleryPageView::ZAHRADNI_NABYTEK_VIEW,"DSC_0609-min.jpg",$width)."
 						</td>
 						
 						<td>
-							".ImageCaptionView::getHTML(GalleryPageView::OSTATNI_VIEW,"DSCN3484.JPG",$width)."
+							".ImageCaptionView::getHTML(GalleryPageView::OSTATNI_VIEW,"DSCN3484-min.jpg",$width)."
 						</td>
 					</tr>
 				</table>";

@@ -5,17 +5,15 @@ require_once('php-comp/WorkView.php');
 require_once('php-comp/ContactPageView.php');
 require_once('php-comp/AbstractPageView.php');
 require_once('php-comp/BodyView.php');
+require_once('php-comp/PageNameResolver.php');
 
 /**
 * Controller for all pages except the gallery page.
 */
 class MainPageController
 {
-	const MAIN_PAGE = 0;
-	const WORK_PAGE = 1;
-	const CONTACT_PAGE = 2;
 
-	private $page = MainPageController::MAIN_PAGE;
+	private $page = PageNameResolver::HOME_PAGE_NAME;
 	private $content = "";
 
 	function __construct($page)
@@ -25,15 +23,15 @@ class MainPageController
 		}
 
 		switch ($this->page) {
-			case MainPageController::MAIN_PAGE:
+			case PageNameResolver::HOME_PAGE_NAME:
 				$this->content = AboutView::getHTML();
 				break;
 
-			case MainPageController::WORK_PAGE:
+			case PageNameResolver::WORK_PAGE_NAME:
 				$this->content = WorkView::getHTML();
 				break;
 
-			case MainPageController::CONTACT_PAGE:
+			case PageNameResolver::CONTACT_PAGE_NAME:
 				$this->content = ContactPageView::getHTML();
 				break;
 			
@@ -45,7 +43,15 @@ class MainPageController
 
 	function getHTML() {
 		$mainMenu = MainMenuView::getHTML(MainMenuView::NOTHING_ACTIVE);
-		$body = BodyView::wrapContent($mainMenu, $this->content);
+		$data = [];
+		$data["op"] = $this->page;
+		$data["g"] = "";
+        if(isset($_GET["err"])) {
+            $data["error"] = escapechars($_GET["err"]);
+        } else {
+            $data["error"] = Errors::NO_ERR;
+        }
+		$body = BodyView::wrapContent($mainMenu, $this->content, $data);
 
 		return AbstractPageView::getHTML($body);
 	}

@@ -10,8 +10,14 @@ require_once('FooterView.php');
 */
 class BodyView
 {
-	
-	static function wrapContent($mainMenu, $content) {
+
+    /**
+     * @param $mainMenu Main menu to be displayed (should be just string).
+     * @param $content Content to be wrapped (should be just string).
+     * @param $data Additional data (should be array).
+     * @return string
+     */
+	static function wrapContent($mainMenu, $content, $data) {
 		return "
 			<body class=\"w3-light-grey\">
 				<div class=\"w3-main\">
@@ -25,7 +31,7 @@ class BodyView
 						<div id=\"mainContent\" class=\"w3-container w3-margin-top w3-twothird\">
 							".$content."
 						</div>
-						".ContactView::getHTML()."
+						".ContactView::getHTML($data)."
 					</div>
 					".FooterView::getHTML()."
 				</div>

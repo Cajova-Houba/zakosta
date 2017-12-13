@@ -34,7 +34,7 @@ class MainMenuView
 					</li>
 					
 					<li class=\"menuItem\">
-						<a href=\"index.php?p=gallery\" class=\"w3-hover-none w3-hover-text-pale-blue\">reference</a>
+						<a href=\"index.php?p=gallery\" class=\"w3-hover-none w3-hover-text-pale-blue\">galerie</a>
 					</li>
 					
 					<li class=\"menuItem\">

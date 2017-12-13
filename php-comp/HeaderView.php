@@ -21,7 +21,8 @@ class HeaderView
 	private static $jScripts = array(
 			"js/script.js",
 			"js/photoswipe.min.js",
-			"js/photoswipe-ui-default.min.js"
+			"js/photoswipe-ui-default.min.js",
+            "https://www.google.com/recaptcha/api.js?hl=cs"
 		);
 	
 	static function getHTML()

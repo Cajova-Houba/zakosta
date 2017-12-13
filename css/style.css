@@ -5,8 +5,7 @@ html {
 }
 
 body {
-	height: 100%;
-	min-height: 100%;
+	margin-bottom: 50px;
 }
 
 #mainLogo {
@@ -38,6 +37,10 @@ body {
 }
 
 #footer {
+	height: 50px;
+	width: 100%;
+	bottom: 0;
+	overflow: hidden;
 	font-size: 70%;
 }
 
